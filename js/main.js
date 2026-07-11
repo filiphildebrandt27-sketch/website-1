@@ -7,11 +7,11 @@
    ========================================================= */
 const KONTAKT = {
   // Telefonnummer im internationalen Format, NUR Ziffern (für tel:-Link)
-  telefon: "49XXXXXXXXXX",          // TODO: z. B. "4915123456789"
+  telefon: "491797313486",
   // Anzeige-Telefonnummer (so wie sie der Besucher sehen soll)
-  telefonAnzeige: "+49 (0) XXX XXXXXXX",   // TODO: z. B. "+49 (0) 2103 123456"
+  telefonAnzeige: "+49 179 7313486",
   // WhatsApp-Nummer, NUR Ziffern, mit Ländervorwahl ohne + oder 00
-  whatsapp: "49XXXXXXXXXX",         // TODO: z. B. "4915123456789"
+  whatsapp: "491797313486",
   // Vorausgefüllte WhatsApp-Nachricht
   whatsappText: "Hallo Hildebrandt Objektservice, ich interessiere mich für Ihre Leistungen und hätte gerne ein Angebot.",
   email: "hildebrandt.kontakt@gmail.com"
@@ -64,35 +64,58 @@ document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Da
   items.forEach(i => io.observe(i));
 })();
 
-/* ---- Kontaktformular: ohne Backend per E-Mail (mailto) ---- */
-/* Hinweis: Für automatischen Versand ohne E-Mail-Programm kann später
-   ein Formular-Dienst (z. B. Netlify Forms, Formspree) eingebunden werden. */
+/* ---- Kontaktformular ----
+   Echte Formular-Funktion über Netlify Forms (funktioniert automatisch,
+   sobald die Seite bei Netlify gehostet wird – kostenlos, kein Backend nötig).
+   Die Anfrage wird an Netlify gesendet und dort per E-Mail-Benachrichtigung
+   an KONTAKT.email weitergeleitet (in den Netlify-Einstellungen einrichten).
+   Falls die Seite NICHT bei Netlify läuft, greift automatisch ein
+   E-Mail-Fallback (mailto), damit keine Anfrage verloren geht. */
 (function contactForm() {
   const form = document.getElementById('kontaktform');
   if (!form) return;
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const name = (data.get('name') || '').toString().trim();
-    const tel = (data.get('telefon') || '').toString().trim();
-    const leistung = (data.get('leistung') || '').toString().trim();
-    const ort = (data.get('ort') || '').toString().trim();
-    const nachricht = (data.get('nachricht') || '').toString().trim();
 
+  const ok = form.querySelector('.form__ok');
+  const submitBtn = form.querySelector('[type="submit"]');
+
+  function mailtoFallback(data) {
     const body =
-`Name: ${name}
-Telefon: ${tel}
-Ort: ${ort}
-Gewünschte Leistung: ${leistung}
+`Name: ${data.get('name') || ''}
+Telefon: ${data.get('telefon') || ''}
+Ort: ${data.get('ort') || ''}
+Gewünschte Leistung: ${data.get('leistung') || ''}
 
 Nachricht:
-${nachricht}`;
-
-    const subject = `Anfrage über die Webseite${leistung ? ' – ' + leistung : ''}`;
+${data.get('nachricht') || ''}`;
+    const subject = `Anfrage über die Webseite${data.get('leistung') ? ' – ' + data.get('leistung') : ''}`;
     window.location.href =
       `mailto:${KONTAKT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
 
-    const ok = form.querySelector('.form__ok');
-    if (ok) ok.style.display = 'block';
+  function showSuccess() {
+    if (ok) { ok.style.display = 'block'; ok.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    form.reset();
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Wird gesendet …'; }
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      });
+      if (res.ok) { showSuccess(); }
+      else { mailtoFallback(data); }
+    } catch (err) {
+      // Netlify nicht verfügbar (z. B. lokal oder anderer Host) → E-Mail-Fallback
+      mailtoFallback(data);
+    } finally {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Anfrage absenden'; }
+    }
   });
 })();

@@ -2,53 +2,53 @@
 
 Statische Webseite (HTML / CSS / JavaScript) für **Hildebrandt Objektservice**.
 Kein Build-Prozess, keine Abhängigkeiten – einfach die Dateien auf einen
-Webspace laden oder bei Netlify / GitHub Pages hochladen.
+Webspace laden oder bei Netlify / GitHub Pages veröffentlichen.
 
 ## Seiten
 | Datei | Inhalt |
 |---|---|
 | `index.html` | Startseite (Hero, Leistungen, Ablauf, Einsatzgebiet, FAQ) |
 | `leistungen.html` | Detailseite Leistungen (Garten, Objekt, Entrümpelung, Elektro) |
-| `kontakt.html` | Kontakt + Anfrageformular |
-| `impressum.html` | Impressum (**Platzhalter – bitte ausfüllen**) |
-| `datenschutz.html` | Datenschutzerklärung (**Muster – bitte prüfen**) |
+| `kontakt.html` | Kontakt + echtes Anfrageformular |
+| `impressum.html` | Impressum (Anschrift eingetragen – USt-IdNr. ggf. ergänzen) |
+| `datenschutz.html` | Datenschutzerklärung (Muster – bitte prüfen) |
 
-## ✅ Vor der Veröffentlichung noch eintragen
+## Eingetragene Daten
+- **Telefon & WhatsApp:** +49 179 7313486
+- **Anschrift:** Köbener Str. 21, 40721 Hilden
+- **Anfragen / E-Mail:** hildebrandt.kontakt@gmail.com
+- **Farben:** Navy `#1f2c44` + Grün `#63a23c` (nach Logo)
 
-### 1. Telefon & WhatsApp (wichtigste Buttons!)
-Öffne **`js/main.js`** und trage oben im Objekt `KONTAKT` die echten Werte ein:
+Kontaktdaten sind zentral in **`js/main.js`** (Objekt `KONTAKT`) hinterlegt und
+füllen automatisch alle Telefon-/WhatsApp-Buttons der ganzen Seite.
 
-```js
-const KONTAKT = {
-  telefon:        "4915123456789",        // deine Telefonnummer, nur Ziffern mit Ländervorwahl
-  telefonAnzeige: "+49 (0) 2103 123456",  // so wird die Nummer angezeigt
-  whatsapp:       "4915123456789",        // WhatsApp-Nummer, nur Ziffern
-  ...
-};
-```
-Damit werden **alle** Telefon- und WhatsApp-Buttons auf der ganzen Seite automatisch aktiv.
+## Kontaktformular (echte Funktion)
+Das Formular nutzt **Netlify Forms** – es funktioniert **automatisch**, sobald die
+Seite bei Netlify gehostet wird (kostenlos, kein eigener Server nötig):
 
-### 2. Impressum & Datenschutz
-In `impressum.html` und `datenschutz.html` die Platzhalter `[in eckigen Klammern]`
-durch die echten Angaben ersetzen (Anschrift, USt-IdNr. falls vorhanden, Hosting-Anbieter).
-Den gelben Hinweiskasten anschließend entfernen. Ein Impressum ist in Deutschland Pflicht.
+1. Seite bei [netlify.com](https://www.netlify.com) veröffentlichen (Repo verbinden
+   oder Ordner per Drag & Drop hochladen).
+2. Im Netlify-Dashboard unter **Forms** erscheint das Formular „kontakt".
+3. Dort unter **Form notifications → Add notification → Email notification** die
+   Adresse `hildebrandt.kontakt@gmail.com` eintragen – dann landet jede Anfrage
+   direkt im Postfach.
 
-### 3. Logo (optional)
-Aktuell wird ein Text-Logo mit Blatt-Symbol verwendet. Ein eigenes Logo kann in
-`assets/` abgelegt und im Header (`class="brand"`) eingebunden werden.
+Läuft die Seite **nicht** bei Netlify, greift automatisch ein E-Mail-Fallback
+(das E-Mail-Programm des Besuchers öffnet sich mit der vorausgefüllten Anfrage),
+damit keine Anfrage verloren geht.
+*Alternative Dienste (funktionieren auf jedem Host): Formspree oder Web3Forms –
+dafür in `js/main.js` die `fetch('/')`-Zeile auf den jeweiligen Endpoint ändern.*
 
-### 4. Fotos (optional, empfohlen)
-Die Bildbereiche sind aktuell SVG-Illustrationen als Platzhalter. Echte Fotos von
-euren Arbeiten (Vorher/Nachher, Garten, Objekte) wirken deutlich vertrauensvoller.
-
-## Kontaktformular
-Das Formular öffnet beim Absenden das E-Mail-Programm des Besuchers (mailto) mit
-vorausgefüllter Anfrage an `hildebrandt.kontakt@gmail.com`. Für automatischen Versand
-ohne E-Mail-Programm kann später ein Dienst wie **Netlify Forms** oder **Formspree**
-eingebunden werden.
+## Noch offen
+- **Logo:** Aktuell wird ein sauberes Navy/Grün-Zeichen mit Schriftzug verwendet.
+  Das Original-Logo (PNG) kann in `assets/` abgelegt und im Header (`class="brand"`)
+  eingebunden werden.
+- **Fotos:** Die Bildflächen sind stilvolle SVG-Illustrationen als Platzhalter.
+  Eigene Fotos (Vorher/Nachher, Garten, Objekte) wirken deutlich vertrauensvoller
+  und können in `assets/` abgelegt und eingebunden werden.
+- **Impressum:** USt-IdNr. ergänzen, falls vorhanden; Hinweiskasten entfernen.
 
 ## Lokal ansehen
-Einfach `index.html` im Browser öffnen – oder mit einem lokalen Server:
 ```bash
 python3 -m http.server 8000
 # dann http://localhost:8000 aufrufen
