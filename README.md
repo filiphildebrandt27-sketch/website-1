@@ -8,7 +8,7 @@ Webspace laden oder bei Netlify / GitHub Pages veröffentlichen.
 | Datei | Inhalt |
 |---|---|
 | `index.html` | Startseite (Hero, Leistungen, Ablauf, Einsatzgebiet, FAQ) |
-| `leistungen.html` | Detailseite Leistungen (Garten, Objekt, Entrümpelung, Elektro) |
+| `leistungen.html` | Detailseite Leistungen (Garten, Objekt, Entrümpelung) |
 | `kontakt.html` | Kontakt + echtes Anfrageformular |
 | `impressum.html` | Impressum (Anschrift eingetragen – USt-IdNr. ggf. ergänzen) |
 | `datenschutz.html` | Datenschutzerklärung (Muster – bitte prüfen) |
@@ -69,7 +69,7 @@ Die Seite ist umfassend für **lokales Service-SEO** optimiert:
   inkl. Adresse, Geo-Koordinaten, Einsatzgebiet, Leistungen), `FAQPage`, `Service`
   und `BreadcrumbList` → Chance auf Rich Results bei Google.
 - **Optimierte Title-Tags & Meta-Descriptions** mit lokalen Keywords (Objektservice,
-  Gartenpflege, Hausmeisterservice, Entrümpelung, Elektroinstallation + Städtenamen).
+  Gartenpflege, Hausmeisterservice, Entrümpelung + Städtenamen).
 - **Keyword-reicher lokaler Textblock** auf der Startseite.
 - **Open Graph & Twitter Cards** inkl. Vorschaubild (`assets/og-image.png`) für Social Media.
 - **Geo-Meta-Tags**, `canonical`-URLs, `robots.txt`, `sitemap.xml`, `site.webmanifest`.
