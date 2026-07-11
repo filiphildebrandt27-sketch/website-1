@@ -271,6 +271,13 @@ section { position: relative; }
 .faq details[open] summary .chev { transform: rotate(180deg); }
 .faq p { padding: 0 24px 22px; color: var(--muted); }
 
+/* ---------- Prose (SEO-Textblock) ---------- */
+.prose { max-width: 780px; margin-inline: auto; }
+.prose p { color: var(--muted); font-size: 1.06rem; margin-bottom: 16px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); font-weight: 700; }
+.prose a { font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
 /* ---------- Page hero (Unterseiten) ---------- */
 .page-hero { background: radial-gradient(900px 420px at 80% -20%, var(--brand-light), transparent 60%), var(--bg-alt); padding: clamp(46px, 6vw, 78px) 0; border-bottom: 1px solid var(--line); }
 .page-hero h1 { margin-bottom: 14px; }

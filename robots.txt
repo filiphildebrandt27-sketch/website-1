@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Rechtliche Seiten aus dem Index halten
+Disallow: /impressum.html
+Disallow: /datenschutz.html
+
+Sitemap: https://www.hildebrandt-objektservice.de/sitemap.xml

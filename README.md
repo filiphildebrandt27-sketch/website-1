@@ -48,6 +48,38 @@ dafür in `js/main.js` die `fetch('/')`-Zeile auf den jeweiligen Endpoint änder
   und können in `assets/` abgelegt und eingebunden werden.
 - **Impressum:** USt-IdNr. ergänzen, falls vorhanden; Hinweiskasten entfernen.
 
+## SEO – was umgesetzt wurde
+Die Seite ist umfassend für **lokales Service-SEO** optimiert:
+
+- **Strukturierte Daten (Schema.org / JSON-LD):** `LocalBusiness` (HomeAndConstructionBusiness
+  inkl. Adresse, Geo-Koordinaten, Einsatzgebiet, Leistungen), `FAQPage`, `Service`
+  und `BreadcrumbList` → Chance auf Rich Results bei Google.
+- **Optimierte Title-Tags & Meta-Descriptions** mit lokalen Keywords (Objektservice,
+  Gartenpflege, Hausmeisterservice, Entrümpelung, Elektroinstallation + Städtenamen).
+- **Keyword-reicher lokaler Textblock** auf der Startseite.
+- **Open Graph & Twitter Cards** inkl. Vorschaubild (`assets/og-image.png`) für Social Media.
+- **Geo-Meta-Tags**, `canonical`-URLs, `robots.txt`, `sitemap.xml`, `site.webmanifest`.
+- **Saubere Semantik:** genau eine H1 pro Seite, sinnvolle Überschriften, interne Verlinkung.
+- **Schnelle Ladezeit:** statische Seite, keine externen Ressourcen, SVG-Grafiken.
+
+### ⚠️ Wichtig: Domain eintragen
+In allen SEO-Angaben ist die Platzhalter-Domain **`https://www.hildebrandt-objektservice.de`**
+hinterlegt. Sobald die echte Domain feststeht, per Suchen & Ersetzen in allen Dateien
+(HTML, `robots.txt`, `sitemap.xml`) austauschen.
+
+### 🚀 Nach dem Livegang – die wichtigsten SEO-Schritte
+1. **Google Unternehmensprofil (Google Business Profile) anlegen** – der mit Abstand
+   wichtigste Faktor für lokale Sichtbarkeit. Adresse, Telefon, Leistungen, Fotos und
+   Öffnungszeiten identisch zur Website eintragen und verifizieren.
+2. **Google Search Console** einrichten und `sitemap.xml` einreichen.
+3. **Bing Webmaster Tools** ebenfalls (Sitemap einreichen).
+4. **Kundenbewertungen** auf Google sammeln – starker lokaler Ranking- und Vertrauensfaktor.
+5. **Branchenverzeichnisse** mit identischen Daten (NAP): Das Örtliche, Gelbe Seiten,
+   11880, wlw, Yelp – sorgt für konsistente Signale.
+6. **Echte Fotos** eurer Arbeiten ergänzen (Bild-SEO + Vertrauen).
+7. Optional: Für jede Stadt eine eigene Unterseite (z. B. „Gartenpflege Solingen") für
+   noch mehr lokale Reichweite.
+
 ## Lokal ansehen
 ```bash
 python3 -m http.server 8000
