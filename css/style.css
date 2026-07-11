@@ -260,6 +260,7 @@ section { position: relative; }
 }
 .field textarea { resize: vertical; min-height: 130px; }
 .form__note { font-size: .85rem; color: var(--muted); margin-top: 14px; text-align: center; }
+.form__note a { text-decoration: underline; text-underline-offset: 2px; }
 .form__ok { display: none; background: var(--brand-light); border: 1px solid var(--brand-100); color: var(--brand-darker); padding: 14px 16px; border-radius: 11px; font-weight: 600; margin-bottom: 18px; }
 
 /* ---------- FAQ ---------- */
