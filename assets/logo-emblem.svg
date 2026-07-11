@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 172" role="img" aria-label="Hildebrandt Objektservice">
+  <!-- ===== Grüner Schwung + Navy-Seiten unter dem Emblem ===== -->
+  <path d="M36 112 A66 66 0 0 0 164 112" fill="none" stroke="#63a23c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M40 118 h34" fill="none" stroke="#1f2c44" stroke-width="8" stroke-linecap="round"/>
+  <path d="M126 118 h34" fill="none" stroke="#1f2c44" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- ===== Linke Gebäude-Silhouette ===== -->
+  <g fill="#1f2c44">
+    <rect x="30" y="70" width="16" height="42"/>
+    <polygon points="46,112 46,52 62,44 62,112"/>
+  </g>
+  <g fill="#ffffff">
+    <rect x="34" y="78" width="4" height="5"/><rect x="34" y="90" width="4" height="5"/>
+    <rect x="50" y="58" width="5" height="6"/><rect x="50" y="72" width="5" height="6"/><rect x="50" y="86" width="5" height="6"/>
+  </g>
+
+  <!-- ===== Serifen-H ===== -->
+  <g fill="#1f2c44">
+    <rect x="78" y="34" width="12" height="76"/>
+    <rect x="118" y="34" width="12" height="76"/>
+    <rect x="90" y="64" width="28" height="12"/>
+    <rect x="72" y="34" width="24" height="6"/>
+    <rect x="72" y="104" width="24" height="6"/>
+    <rect x="112" y="34" width="24" height="6"/>
+    <rect x="112" y="104" width="24" height="6"/>
+  </g>
+
+  <!-- ===== Haus (Dach + Fenster) am Fuß des H ===== -->
+  <g fill="#1f2c44">
+    <polygon points="104,70 134,96 74,96 z"/>
+    <rect x="80" y="96" width="48" height="14"/>
+  </g>
+  <g fill="#ffffff">
+    <rect x="96" y="88" width="16" height="16" rx="1"/>
+  </g>
+  <g fill="#1f2c44">
+    <rect x="103" y="88" width="2" height="16"/>
+    <rect x="96" y="95" width="16" height="2"/>
+  </g>
+
+  <!-- ===== Grüner Zweig mit zwei Blättern rechts ===== -->
+  <path d="M146 106 C146 88 150 76 158 68" fill="none" stroke="#63a23c" stroke-width="5" stroke-linecap="round"/>
+  <g fill="#63a23c">
+    <!-- großes Blatt -->
+    <path d="M154 74 Q158 52 182 42 Q174 68 154 74 Z"/>
+    <!-- kleines Blatt -->
+    <path d="M148 86 Q150 72 168 66 Q160 84 148 86 Z"/>
+  </g>
+  <g fill="none" stroke="#4f8a2e" stroke-width="1.6" stroke-linecap="round">
+    <path d="M156 72 L178 48"/>
+    <path d="M150 84 L164 70"/>
+  </g>
+</svg>
