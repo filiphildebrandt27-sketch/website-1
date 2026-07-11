@@ -140,9 +140,8 @@
 
       <!-- Formular -->
       <div class="reveal">
-        <form class="form" id="kontaktform" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
-          <input type="hidden" name="form-name" value="kontakt" />
-          <p class="hp" hidden aria-hidden="true"><label>Bitte leer lassen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <form class="form" id="kontaktform" name="kontakt" method="POST" action="https://api.web3forms.com/submit" novalidate>
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
           <div class="form__ok">Vielen Dank für Ihre Anfrage! Wir melden uns schnellstmöglich bei Ihnen. Für dringende Anliegen erreichen Sie uns direkt per WhatsApp oder Telefon.</div>
           <div class="field">
             <label for="name">Name *</label>

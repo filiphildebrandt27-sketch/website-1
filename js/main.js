@@ -14,7 +14,14 @@ const KONTAKT = {
   whatsapp: "491797313486",
   // Vorausgefüllte WhatsApp-Nachricht
   whatsappText: "Hallo Hildebrandt Objektservice, ich interessiere mich für Ihre Leistungen und hätte gerne ein Angebot.",
-  email: "hildebrandt.kontakt@gmail.com"
+  email: "hildebrandt.kontakt@gmail.com",
+
+  // ► Kontaktformular: kostenloser Access-Key von https://web3forms.com
+  //   (einfach E-Mail-Adresse eintragen, Key kommt sofort per Mail – kein Konto nötig).
+  //   Solange hier der Platzhalter steht, öffnet das Formular ersatzweise das
+  //   E-Mail-Programm (mailto). Mit gültigem Key wird die Anfrage automatisch
+  //   an KONTAKT.email gesendet – funktioniert auf Vercel und jedem Host.
+  web3formsKey: "DEIN-WEB3FORMS-ACCESS-KEY"
 };
 
 /* ---- Kontaktdaten in die Seite einsetzen ---- */
@@ -65,11 +72,11 @@ document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Da
 })();
 
 /* ---- Kontaktformular ----
-   Echte Formular-Funktion über Netlify Forms (funktioniert automatisch,
-   sobald die Seite bei Netlify gehostet wird – kostenlos, kein Backend nötig).
-   Die Anfrage wird an Netlify gesendet und dort per E-Mail-Benachrichtigung
-   an KONTAKT.email weitergeleitet (in den Netlify-Einstellungen einrichten).
-   Falls die Seite NICHT bei Netlify läuft, greift automatisch ein
+   Echte Formular-Funktion über Web3Forms (https://web3forms.com) – kostenlos,
+   ohne eigenen Server, funktioniert auf Vercel und jedem anderen Host. Die
+   Anfrage wird direkt aus dem Browser des Besuchers an Web3Forms gesendet und
+   von dort per E-Mail an KONTAKT.email zugestellt.
+   Ist kein gültiger Access-Key hinterlegt, greift automatisch ein
    E-Mail-Fallback (mailto), damit keine Anfrage verloren geht. */
 (function contactForm() {
   const form = document.getElementById('kontaktform');
@@ -77,6 +84,7 @@ document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Da
 
   const ok = form.querySelector('.form__ok');
   const submitBtn = form.querySelector('[type="submit"]');
+  const keyReady = KONTAKT.web3formsKey && !/DEIN-/.test(KONTAKT.web3formsKey);
 
   function mailtoFallback(data) {
     const body =
@@ -101,18 +109,33 @@ ${data.get('nachricht') || ''}`;
     e.preventDefault();
     if (!form.reportValidity()) return;
     const data = new FormData(form);
-    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Wird gesendet …'; }
 
+    // Honeypot: von Bots ausgefüllt → still verwerfen
+    if (data.get('botcheck')) return;
+
+    if (!keyReady) { mailtoFallback(data); return; }
+
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Wird gesendet …'; }
+    const payload = {
+      access_key: KONTAKT.web3formsKey,
+      subject: `Anfrage über die Webseite${data.get('leistung') ? ' – ' + data.get('leistung') : ''}`,
+      from_name: 'Webseite Hildebrandt Objektservice',
+      name: data.get('name') || '',
+      telefon: data.get('telefon') || '',
+      ort: data.get('ort') || '',
+      leistung: data.get('leistung') || '',
+      nachricht: data.get('nachricht') || ''
+    };
     try {
-      const res = await fetch('/', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data).toString()
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
       });
-      if (res.ok) { showSuccess(); }
+      const out = await res.json().catch(() => ({}));
+      if (res.ok && out.success) { showSuccess(); }
       else { mailtoFallback(data); }
     } catch (err) {
-      // Netlify nicht verfügbar (z. B. lokal oder anderer Host) → E-Mail-Fallback
       mailtoFallback(data);
     } finally {
       if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Anfrage absenden'; }
