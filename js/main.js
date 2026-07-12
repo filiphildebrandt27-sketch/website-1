@@ -21,7 +21,7 @@ const KONTAKT = {
   //   Solange hier der Platzhalter steht, öffnet das Formular ersatzweise das
   //   E-Mail-Programm (mailto). Mit gültigem Key wird die Anfrage automatisch
   //   an KONTAKT.email gesendet – funktioniert auf Vercel und jedem Host.
-  web3formsKey: "DEIN-WEB3FORMS-ACCESS-KEY"
+  web3formsKey: "0cb6abb8-7294-48bd-9168-433911c2b282"
 };
 
 /* ---- Kontaktdaten in die Seite einsetzen ---- */
