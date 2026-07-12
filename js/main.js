@@ -71,6 +71,17 @@ document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Da
   items.forEach(i => io.observe(i));
 })();
 
+/* ---- Vorher/Nachher-Slider ---- */
+(function beforeAfter() {
+  document.querySelectorAll('[data-ba]').forEach(ba => {
+    const range = ba.querySelector('.ba__range');
+    if (!range) return;
+    const set = v => ba.style.setProperty('--ba-pos', v + '%');
+    set(range.value);
+    range.addEventListener('input', () => set(range.value));
+  });
+})();
+
 /* ---- Header: Schatten/Border beim Scrollen ---- */
 (function headerScroll() {
   const header = document.querySelector('.site-header');
