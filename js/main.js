@@ -71,6 +71,40 @@ document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Da
   items.forEach(i => io.observe(i));
 })();
 
+/* ---- Header: Schatten/Border beim Scrollen ---- */
+(function headerScroll() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+/* ---- Animierte Zahlen (Stats) ---- */
+(function countUp() {
+  const nums = document.querySelectorAll('[data-count]');
+  if (!nums.length) return;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const run = (el) => {
+    const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    const suffix = el.getAttribute('data-suffix') || '';
+    if (prefersReduced || !('requestAnimationFrame' in window)) { el.textContent = target + suffix; return; }
+    const dur = 1300; const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  if (!('IntersectionObserver' in window)) { nums.forEach(run); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  nums.forEach(n => io.observe(n));
+})();
+
 /* ---- Kontaktformular ----
    Echte Formular-Funktion über Web3Forms (https://web3forms.com) – kostenlos,
    ohne eigenen Server, funktioniert auf Vercel und jedem anderen Host. Die
