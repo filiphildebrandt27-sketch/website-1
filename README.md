@@ -76,10 +76,9 @@ Die Seite ist umfassend für **lokales Service-SEO** optimiert:
 - **Saubere Semantik:** genau eine H1 pro Seite, sinnvolle Überschriften, interne Verlinkung.
 - **Schnelle Ladezeit:** statische Seite, keine externen Ressourcen, SVG-Grafiken.
 
-### ⚠️ Wichtig: Domain eintragen
-In allen SEO-Angaben ist die Platzhalter-Domain **`https://www.hildebrandt-objektservice.de`**
-hinterlegt. Sobald die echte Domain feststeht, per Suchen & Ersetzen in allen Dateien
-(HTML, `robots.txt`, `sitemap.xml`) austauschen.
+### Domain
+In allen SEO-Angaben (Canonical-URLs, Open Graph, Sitemap, robots.txt, strukturierte
+Daten) ist die Domain **`https://objektservicehildebrandt.de`** eingetragen.
 
 ### 🚀 Nach dem Livegang – die wichtigsten SEO-Schritte
 1. **Google Unternehmensprofil (Google Business Profile) anlegen** – der mit Abstand

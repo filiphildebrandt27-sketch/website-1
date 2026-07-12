@@ -5,4 +5,4 @@ Allow: /
 Disallow: /impressum.html
 Disallow: /datenschutz.html
 
-Sitemap: https://www.hildebrandt-objektservice.de/sitemap.xml
+Sitemap: https://objektservicehildebrandt.de/sitemap.xml
