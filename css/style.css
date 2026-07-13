@@ -292,6 +292,7 @@ section { position: relative; }
 /* ---------- Feature Split ---------- */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .split__media { border-radius: var(--r-xl); aspect-ratio: 5 / 4; box-shadow: var(--sh-lg); position: relative; overflow: hidden; }
+.split__media > img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .checklist { display: grid; gap: 16px; margin-top: 28px; }
 .checklist li { display: flex; gap: 14px; align-items: flex-start; font-size: 1.04rem; }
 .checklist svg { width: 26px; height: 26px; color: var(--forest); flex: none; margin-top: 1px; }
