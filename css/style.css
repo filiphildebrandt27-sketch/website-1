@@ -65,8 +65,8 @@ a { color: var(--forest-dark); text-decoration: none; transition: color .2s ease
 a:hover { color: var(--forest); }
 ul { list-style: none; }
 h1, h2, h3, h4 { color: var(--ink); font-weight: 800; letter-spacing: -.025em; }
-h1 { font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1.02; }
-h2 { font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.08; }
+h1 { font-size: clamp(1.95rem, 7vw, 5rem); line-height: 1.05; }
+h2 { font-size: clamp(1.6rem, 4.5vw, 3.1rem); line-height: 1.12; }
 h3 { font-size: 1.32rem; line-height: 1.25; letter-spacing: -.02em; }
 p  { color: var(--body); }
 section { position: relative; }
@@ -457,6 +457,10 @@ section { position: relative; }
 }
 @media (max-width: 480px) {
   body { font-size: 16px; }
+  h1 { line-height: 1.12; }
+  h2 { line-height: 1.18; }
+  .hero h1 { margin-bottom: 20px; }
+  .hero__lead { font-size: 1.05rem; }
   .footer__grid { grid-template-columns: 1fr; }
   .region-grid { grid-template-columns: 1fr; }
   .btn-row .btn { width: 100%; }
