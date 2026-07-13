@@ -332,7 +332,8 @@ section { position: relative; }
 .page-hero { position: relative; overflow: hidden; background: linear-gradient(155deg, #12392b 0%, #16202b 70%); color: #eaf1ec; padding: clamp(70px, 12vh, 130px) 0 clamp(56px, 8vh, 96px); }
 .page-hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(800px 420px at 82% -10%, rgba(79,158,106,.28), transparent 60%); pointer-events: none; }
 .page-hero .container { position: relative; z-index: 1; }
-.page-hero h1 { color: #fff; margin-bottom: 16px; }
+.page-hero h1 { color: #fff; margin-bottom: 14px; }
+.page-hero__sub { font-size: clamp(1.15rem, 2.4vw, 1.6rem); font-weight: 600; color: #dbe6df; line-height: 1.35; margin: 0 0 16px; max-width: 46ch; }
 .page-hero p { color: #c5d0cb; font-size: 1.16rem; max-width: 60ch; }
 .page-hero .eyebrow { color: var(--leaf); }
 .page-hero .eyebrow::before { background: var(--leaf); }
