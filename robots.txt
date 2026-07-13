@@ -1,8 +1,8 @@
 User-agent: *
 Allow: /
 
-# Rechtliche Seiten aus dem Index halten
-Disallow: /impressum.html
-Disallow: /datenschutz.html
+# Rechtliche Seiten sind per Meta-Robots auf "noindex" gesetzt und daher
+# bewusst nicht in der Sitemap – sie bleiben aber crawlbar, damit der
+# noindex-Hinweis gelesen werden kann.
 
 Sitemap: https://objektservicehildebrandt.de/sitemap.xml
