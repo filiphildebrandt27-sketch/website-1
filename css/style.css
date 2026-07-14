@@ -136,9 +136,9 @@ section { position: relative; }
 .brand:hover { color: var(--ink); }
 .brand__logo {
   width: 54px; height: 48px; flex: none;
-  background: center / contain no-repeat url('../assets/logo-emblem.svg');
+  background: center / contain no-repeat url('../assets/logo-emblem-v2.svg');
 }
-.footer .brand__logo { background-image: url('../assets/logo-emblem-light.svg'); }
+.footer .brand__logo { background-image: url('../assets/logo-emblem-light-v2.svg'); }
 .brand__name small { display: block; font-size: .7rem; font-weight: 600; color: var(--muted); letter-spacing: .18em; text-transform: uppercase; margin-top: 3px; }
 
 .nav__links { display: flex; align-items: center; gap: 2px; }
