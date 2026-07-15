@@ -6,6 +6,9 @@
     { "source": "/index.html", "destination": "/", "permanent": true },
     { "source": "/index", "destination": "/", "permanent": true }
   ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/wartung.html" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
